@@ -1,6 +1,9 @@
 const { WebsocketClients } = require('../utils/data');
 
 const clientInfos = require('./clientInfos');
+
+const sendPayloadToPlayer = require('./sendPayloadToPlayer');
+
 const disconnect = require('./disconnect');
 
 module.exports = (io) => {
@@ -13,7 +16,10 @@ module.exports = (io) => {
             PlayerHomeworld: null
         };
 
-        clientInfos(socket, io);
-        disconnect(socket, io);
+        clientInfos(socket, io); // On connect, the client has to send its infos to the server
+
+        sendPayloadToPlayer(socket, io);
+
+        disconnect(socket, io); // On client disconnect
     });
 };

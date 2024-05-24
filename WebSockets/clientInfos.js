@@ -1,11 +1,4 @@
-const { WebsocketClients } = require('../utils/data');
-
-class CustomServerError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "CustomServerError";
-    }
-}
+const { WebsocketClients, CustomServerError } = require('../utils/data');
 
 module.exports = (socket, io) => {
     socket.on("clientInfos", (clientInfos) => {
