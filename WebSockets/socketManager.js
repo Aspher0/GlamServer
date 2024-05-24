@@ -1,11 +1,19 @@
-const clientPing = require('./clientPing');
+const { WebsocketClients } = require('../utils/data');
+
+const clientInfos = require('./clientInfos');
 const disconnect = require('./disconnect');
 
 module.exports = (io) => {
     io.on("connection", (socket) => {
-        console.log('New client connected');
+        console.log('Client connected');
 
-        clientPing(socket, io);
+        WebsocketClients[socket.id] =
+        {
+            PlayerName: null,
+            PlayerHomeworld: null
+        };
+
+        clientInfos(socket, io);
         disconnect(socket, io);
     });
 };
