@@ -1,3 +1,8 @@
 node_modules
 Start GlamServer.bat
 utils/config.ini
+.vscode
+.well-known
+.git
+passenger.log
+package-lock.json
