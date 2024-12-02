@@ -38,7 +38,7 @@ module.exports = (socket, io) => {
                 throw new CustomServerError("The player you are trying to reach has not been found or is not connected to the server.");
 
             matchingSocketIds.forEach(socket_id => {
-                io.to(socket_id).emit("transferPayloadFromPlayer", parsedPayload);
+                io.to(socket_id).emit("permissionsPayloadFromPlayer", parsedPayload);
             });
         } catch (error)
         {
